@@ -68,7 +68,7 @@ void SchedulerController(void* pvParameters) {
             if (taskList[i].state != TASK_TERMINATED && taskList[i].remainingTime > 0) {
                 if ((globalTime - taskList[i].lastActiveTime) >= 20) {
                     taskList[i].state = TASK_TERMINATED;
-                    printf("%d.0000 sn proses zamanasımı\t(id:%04d\toncelik:%d\tkalan sure:%d sn)\n",
+                    printf("%d.0000 sn proses zamanasımı\t\t(id:%04d\toncelik:%d\tkalan sure:%d sn)\n",
                            globalTime, taskList[i].id, taskList[i].priority, taskList[i].remainingTime);
 
                     // Eğer zaman aşımına uğrayan RT ise ve "runningRTTask" ise temizle
@@ -132,7 +132,7 @@ void SchedulerController(void* pvParameters) {
                 printf("%d.0000 sn proses başladı\t\t(id:%04d\toncelik:%d\tkalan sure:%d sn)\n",
                        globalTime, currentTask->id, currentTask->priority, currentTask->remainingTime);
             } else {
-                printf("%d.0000 sn proses yürütülüyor\t(id:%04d\toncelik:%d\tkalan sure:%d sn)\n",
+                printf("%d.0000 sn proses yürütülüyor\t\t(id:%04d\toncelik:%d\tkalan sure:%d sn)\n",
                        globalTime, currentTask->id, currentTask->priority, currentTask->remainingTime);
             }
 
