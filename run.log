@@ -1,150 +1,111 @@
+koraywslubuntu@KoraysWindowsPC:/mnt/c/Users/temiz/OneDrive/Masaüstü/ISLETIM/grup06_isletim (2)/grup06_isletim/akhuz$ ./freertos_sim giris.txt
 --- Dosya Okuma Basladi: giris.txt ---
-Okundu -> Task: T1 | Gelis: 0 | Oncelik: 1 | Sure: 2
-Okundu -> Task: T2 | Gelis: 1 | Oncelik: 0 | Sure: 1
-Okundu -> Task: T3 | Gelis: 1 | Oncelik: 3 | Sure: 2
-Okundu -> Task: T4 | Gelis: 1 | Oncelik: 0 | Sure: 3
-Okundu -> Task: T5 | Gelis: 1 | Oncelik: 2 | Sure: 2
-Okundu -> Task: T6 | Gelis: 2 | Oncelik: 2 | Sure: 3
+Okundu -> Task: T0 | Gelis: 0 | Oncelik: 1 | Sure: 2
+Okundu -> Task: T1 | Gelis: 1 | Oncelik: 0 | Sure: 1
+Okundu -> Task: T2 | Gelis: 1 | Oncelik: 3 | Sure: 2
+Okundu -> Task: T3 | Gelis: 1 | Oncelik: 0 | Sure: 3
+Okundu -> Task: T4 | Gelis: 1 | Oncelik: 2 | Sure: 2
+Okundu -> Task: T5 | Gelis: 2 | Oncelik: 2 | Sure: 3
+Okundu -> Task: T6 | Gelis: 2 | Oncelik: 0 | Sure: 4
 Okundu -> Task: T7 | Gelis: 2 | Oncelik: 0 | Sure: 4
-Okundu -> Task: T8 | Gelis: 2 | Oncelik: 0 | Sure: 4
-Okundu -> Task: T9 | Gelis: 3 | Oncelik: 0 | Sure: 2
-Okundu -> Task: T10 | Gelis: 4 | Oncelik: 2 | Sure: 4
-Okundu -> Task: T11 | Gelis: 5 | Oncelik: 0 | Sure: 3
-Okundu -> Task: T12 | Gelis: 5 | Oncelik: 3 | Sure: 2
-Okundu -> Task: T13 | Gelis: 6 | Oncelik: 3 | Sure: 2
-Okundu -> Task: T14 | Gelis: 6 | Oncelik: 1 | Sure: 2
-Okundu -> Task: T15 | Gelis: 8 | Oncelik: 1 | Sure: 4
-Okundu -> Task: T16 | Gelis: 9 | Oncelik: 3 | Sure: 4
-Okundu -> Task: T17 | Gelis: 11 | Oncelik: 0 | Sure: 4
-Okundu -> Task: T18 | Gelis: 12 | Oncelik: 0 | Sure: 4
-Okundu -> Task: T19 | Gelis: 14 | Oncelik: 2 | Sure: 2
-Okundu -> Task: T20 | Gelis: 15 | Oncelik: 0 | Sure: 4
-Okundu -> Task: T21 | Gelis: 16 | Oncelik: 3 | Sure: 3
-Okundu -> Task: T22 | Gelis: 18 | Oncelik: 3 | Sure: 2
-Okundu -> Task: T23 | Gelis: 22 | Oncelik: 2 | Sure: 3
-Okundu -> Task: T24 | Gelis: 23 | Oncelik: 3 | Sure: 2
-Okundu -> Task: T25 | Gelis: 24 | Oncelik: 1 | Sure: 2
+Okundu -> Task: T8 | Gelis: 3 | Oncelik: 0 | Sure: 2
+Okundu -> Task: T9 | Gelis: 4 | Oncelik: 2 | Sure: 4
+Okundu -> Task: T10 | Gelis: 5 | Oncelik: 0 | Sure: 3
+Okundu -> Task: T11 | Gelis: 5 | Oncelik: 3 | Sure: 2
+Okundu -> Task: T12 | Gelis: 6 | Oncelik: 3 | Sure: 2
+Okundu -> Task: T13 | Gelis: 6 | Oncelik: 1 | Sure: 2
+Okundu -> Task: T14 | Gelis: 8 | Oncelik: 1 | Sure: 4
+Okundu -> Task: T15 | Gelis: 9 | Oncelik: 3 | Sure: 4
+Okundu -> Task: T16 | Gelis: 11 | Oncelik: 0 | Sure: 4
+Okundu -> Task: T17 | Gelis: 12 | Oncelik: 0 | Sure: 4
+Okundu -> Task: T18 | Gelis: 14 | Oncelik: 2 | Sure: 2
+Okundu -> Task: T19 | Gelis: 15 | Oncelik: 0 | Sure: 4
+Okundu -> Task: T20 | Gelis: 16 | Oncelik: 3 | Sure: 3
+Okundu -> Task: T21 | Gelis: 18 | Oncelik: 3 | Sure: 2
+Okundu -> Task: T22 | Gelis: 22 | Oncelik: 2 | Sure: 3
+Okundu -> Task: T23 | Gelis: 23 | Oncelik: 3 | Sure: 2
+Okundu -> Task: T24 | Gelis: 24 | Oncelik: 1 | Sure: 2
 --- Toplam 25 task yüklendi. ---
 
 [SISTEM] FreeRTOS Kernel Baslatiliyor... (Simulasyon Basladi)
 [DIAGNOSTIC] vTaskStartScheduler çağrılacak...
-0.0000 sn T3 başladı 	(id:0003 	öncelik:3 	kalan süre:2 sn)
-0.0000 sn T3 yürütülüyor 	(id:0003 	öncelik:3 	kalan süre:2 sn)
-0.0000 sn T12 başladı 	(id:0012 	öncelik:3 	kalan süre:2 sn)
-0.0000 sn T12 yürütülüyor 	(id:0012 	öncelik:3 	kalan süre:2 sn)
-0.0000 sn T13 başladı 	(id:0013 	öncelik:3 	kalan süre:2 sn)
-0.0000 sn T13 yürütülüyor 	(id:0013 	öncelik:3 	kalan süre:2 sn)
-0.0000 sn T16 başladı 	(id:0016 	öncelik:3 	kalan süre:4 sn)
-0.0000 sn T16 yürütülüyor 	(id:0016 	öncelik:3 	kalan süre:4 sn)
-0.0000 sn T21 başladı 	(id:0021 	öncelik:3 	kalan süre:3 sn)
-0.0000 sn T21 yürütülüyor 	(id:0021 	öncelik:3 	kalan süre:3 sn)
-0.0000 sn T22 başladı 	(id:0022 	öncelik:3 	kalan süre:2 sn)
-0.0000 sn T22 yürütülüyor 	(id:0022 	öncelik:3 	kalan süre:2 sn)
-0.0000 sn T24 başladı 	(id:0024 	öncelik:3 	kalan süre:2 sn)
-0.0000 sn T24 yürütülüyor 	(id:0024 	öncelik:3 	kalan süre:2 sn)
-0.0000 sn T5 başladı 	(id:0005 	öncelik:2 	kalan süre:2 sn)
-0.0000 sn T5 yürütülüyor 	(id:0005 	öncelik:2 	kalan süre:2 sn)
-0.0000 sn T6 başladı 	(id:0006 	öncelik:2 	kalan süre:3 sn)
-0.0000 sn T6 yürütülüyor 	(id:0006 	öncelik:2 	kalan süre:3 sn)
-0.0000 sn T10 başladı 	(id:0010 	öncelik:2 	kalan süre:4 sn)
-0.0000 sn T10 yürütülüyor 	(id:0010 	öncelik:2 	kalan süre:4 sn)
-0.0000 sn T19 başladı 	(id:0019 	öncelik:2 	kalan süre:2 sn)
-0.0000 sn T19 yürütülüyor 	(id:0019 	öncelik:2 	kalan süre:2 sn)
-0.0000 sn T23 başladı 	(id:0023 	öncelik:2 	kalan süre:3 sn)
-0.0000 sn T23 yürütülüyor 	(id:0023 	öncelik:2 	kalan süre:3 sn)
-0.0010 sn T14 başladı 	(id:0014 	öncelik:1 	kalan süre:2 sn)
-0.0010 sn T14 yürütülüyor 	(id:0014 	öncelik:1 	kalan süre:2 sn)
-0.0010 sn T15 başladı 	(id:0015 	öncelik:1 	kalan süre:4 sn)
-0.0010 sn T15 yürütülüyor 	(id:0015 	öncelik:1 	kalan süre:4 sn)
-0.0010 sn T25 başladı 	(id:0025 	öncelik:1 	kalan süre:2 sn)
-0.0010 sn T25 yürütülüyor 	(id:0025 	öncelik:1 	kalan süre:2 sn)
-0.0010 sn T1 başladı 	(id:0001 	öncelik:1 	kalan süre:2 sn)
-0.0010 sn T1 yürütülüyor 	(id:0001 	öncelik:1 	kalan süre:2 sn)
-0.0010 sn T2 başladı 	(id:0002 	öncelik:0 	kalan süre:1 sn)
-0.0010 sn T2 yürütülüyor 	(id:0002 	öncelik:0 	kalan süre:1 sn)
-0.0010 sn T4 başladı 	(id:0004 	öncelik:0 	kalan süre:3 sn)
-0.0010 sn T4 yürütülüyor 	(id:0004 	öncelik:0 	kalan süre:3 sn)
-0.0010 sn T7 başladı 	(id:0007 	öncelik:0 	kalan süre:4 sn)
-0.0010 sn T7 yürütülüyor 	(id:0007 	öncelik:0 	kalan süre:4 sn)
-0.0010 sn T8 başladı 	(id:0008 	öncelik:0 	kalan süre:4 sn)
-0.0010 sn T8 yürütülüyor 	(id:0008 	öncelik:0 	kalan süre:4 sn)
-0.0010 sn T9 başladı 	(id:0009 	öncelik:0 	kalan süre:2 sn)
-0.0010 sn T9 yürütülüyor 	(id:0009 	öncelik:0 	kalan süre:2 sn)
-0.0010 sn T11 başladı 	(id:0011 	öncelik:0 	kalan süre:3 sn)
-0.0010 sn T11 yürütülüyor 	(id:0011 	öncelik:0 	kalan süre:3 sn)
-0.0010 sn T17 başladı 	(id:0017 	öncelik:0 	kalan süre:4 sn)
-0.0010 sn T17 yürütülüyor 	(id:0017 	öncelik:0 	kalan süre:4 sn)
-0.0010 sn T18 başladı 	(id:0018 	öncelik:0 	kalan süre:4 sn)
-0.0010 sn T18 yürütülüyor 	(id:0018 	öncelik:0 	kalan süre:4 sn)
-0.0010 sn T20 başladı 	(id:0020 	öncelik:0 	kalan süre:4 sn)
-0.0010 sn T20 yürütülüyor 	(id:0020 	öncelik:0 	kalan süre:4 sn)
-1.0000 sn T3 yürütülüyor 	(id:0003 	öncelik:3 	kalan süre:1 sn)
-1.0000 sn T12 yürütülüyor 	(id:0012 	öncelik:3 	kalan süre:1 sn)
-1.0000 sn T13 yürütülüyor 	(id:0013 	öncelik:3 	kalan süre:1 sn)
-1.0000 sn T16 yürütülüyor 	(id:0016 	öncelik:3 	kalan süre:3 sn)
-1.0000 sn T21 yürütülüyor 	(id:0021 	öncelik:3 	kalan süre:2 sn)
-1.0000 sn T22 yürütülüyor 	(id:0022 	öncelik:3 	kalan süre:1 sn)
-1.0000 sn T24 yürütülüyor 	(id:0024 	öncelik:3 	kalan süre:1 sn)
-1.0000 sn T5 yürütülüyor 	(id:0005 	öncelik:2 	kalan süre:1 sn)
-1.0000 sn T6 yürütülüyor 	(id:0006 	öncelik:2 	kalan süre:2 sn)
-1.0000 sn T10 yürütülüyor 	(id:0010 	öncelik:2 	kalan süre:3 sn)
-1.0000 sn T19 yürütülüyor 	(id:0019 	öncelik:2 	kalan süre:1 sn)
-1.0000 sn T23 yürütülüyor 	(id:0023 	öncelik:2 	kalan süre:2 sn)
-1.0010 sn T14 yürütülüyor 	(id:0014 	öncelik:1 	kalan süre:1 sn)
-1.0010 sn T15 yürütülüyor 	(id:0015 	öncelik:1 	kalan süre:3 sn)
-1.0010 sn T25 yürütülüyor 	(id:0025 	öncelik:1 	kalan süre:1 sn)
-1.0010 sn T1 yürütülüyor 	(id:0001 	öncelik:1 	kalan süre:1 sn)
-1.0010 sn T2 sonlandi 	(id:0002 	öncelik:0 	kalan süre:0 sn)
-1.0010 sn T4 yürütülüyor 	(id:0004 	öncelik:0 	kalan süre:2 sn)
-1.0010 sn T7 yürütülüyor 	(id:0007 	öncelik:0 	kalan süre:3 sn)
-1.0010 sn T8 yürütülüyor 	(id:0008 	öncelik:0 	kalan süre:3 sn)
-1.0010 sn T9 yürütülüyor 	(id:0009 	öncelik:0 	kalan süre:1 sn)
-1.0010 sn T11 yürütülüyor 	(id:0011 	öncelik:0 	kalan süre:2 sn)
-1.0010 sn T17 yürütülüyor 	(id:0017 	öncelik:0 	kalan süre:3 sn)
-1.0010 sn T18 yürütülüyor 	(id:0018 	öncelik:0 	kalan süre:3 sn)
-1.0020 sn T20 yürütülüyor 	(id:0020 	öncelik:0 	kalan süre:3 sn)
-2.0000 sn T3 sonlandi 	(id:0003 	öncelik:3 	kalan süre:0 sn)
-2.0000 sn T12 sonlandi 	(id:0012 	öncelik:3 	kalan süre:0 sn)
-2.0000 sn T13 sonlandi 	(id:0013 	öncelik:3 	kalan süre:0 sn)
-2.0000 sn T16 yürütülüyor 	(id:0016 	öncelik:3 	kalan süre:2 sn)
-2.0000 sn T21 yürütülüyor 	(id:0021 	öncelik:3 	kalan süre:1 sn)
-2.0000 sn T22 sonlandi 	(id:0022 	öncelik:3 	kalan süre:0 sn)
-2.0000 sn T24 sonlandi 	(id:0024 	öncelik:3 	kalan süre:0 sn)
-2.0000 sn T5 sonlandi 	(id:0005 	öncelik:2 	kalan süre:0 sn)
-2.0000 sn T6 yürütülüyor 	(id:0006 	öncelik:2 	kalan süre:1 sn)
-2.0000 sn T10 yürütülüyor 	(id:0010 	öncelik:2 	kalan süre:2 sn)
-2.0000 sn T19 sonlandi 	(id:0019 	öncelik:2 	kalan süre:0 sn)
-2.0000 sn T23 yürütülüyor 	(id:0023 	öncelik:2 	kalan süre:1 sn)
-2.0010 sn T14 sonlandi 	(id:0014 	öncelik:1 	kalan süre:0 sn)
-2.0010 sn T15 yürütülüyor 	(id:0015 	öncelik:1 	kalan süre:2 sn)
-2.0010 sn T25 sonlandi 	(id:0025 	öncelik:1 	kalan süre:0 sn)
-2.0010 sn T1 sonlandi 	(id:0001 	öncelik:1 	kalan süre:0 sn)
-2.0010 sn T4 yürütülüyor 	(id:0004 	öncelik:0 	kalan süre:1 sn)
-2.0010 sn T7 yürütülüyor 	(id:0007 	öncelik:0 	kalan süre:2 sn)
-2.0010 sn T8 yürütülüyor 	(id:0008 	öncelik:0 	kalan süre:2 sn)
-2.0010 sn T9 sonlandi 	(id:0009 	öncelik:0 	kalan süre:0 sn)
-2.0010 sn T11 yürütülüyor 	(id:0011 	öncelik:0 	kalan süre:1 sn)
-2.0010 sn T17 yürütülüyor 	(id:0017 	öncelik:0 	kalan süre:2 sn)
-2.0030 sn T18 yürütülüyor 	(id:0018 	öncelik:0 	kalan süre:2 sn)
-2.0030 sn T20 yürütülüyor 	(id:0020 	öncelik:0 	kalan süre:2 sn)
-3.0000 sn T16 yürütülüyor 	(id:0016 	öncelik:3 	kalan süre:1 sn)
-3.0000 sn T21 sonlandi 	(id:0021 	öncelik:3 	kalan süre:0 sn)
-3.0000 sn T6 sonlandi 	(id:0006 	öncelik:2 	kalan süre:0 sn)
-3.0000 sn T10 yürütülüyor 	(id:0010 	öncelik:2 	kalan süre:1 sn)
-3.0000 sn T23 sonlandi 	(id:0023 	öncelik:2 	kalan süre:0 sn)
-3.0010 sn T15 yürütülüyor 	(id:0015 	öncelik:1 	kalan süre:1 sn)
-3.0010 sn T4 sonlandi 	(id:0004 	öncelik:0 	kalan süre:0 sn)
-3.0010 sn T7 yürütülüyor 	(id:0007 	öncelik:0 	kalan süre:1 sn)
-3.0010 sn T8 yürütülüyor 	(id:0008 	öncelik:0 	kalan süre:1 sn)
-3.0010 sn T11 sonlandi 	(id:0011 	öncelik:0 	kalan süre:0 sn)
-3.0010 sn T17 yürütülüyor 	(id:0017 	öncelik:0 	kalan süre:1 sn)
-3.0030 sn T18 yürütülüyor 	(id:0018 	öncelik:0 	kalan süre:1 sn)
-3.0030 sn T20 yürütülüyor 	(id:0020 	öncelik:0 	kalan süre:1 sn)
-4.0000 sn T16 sonlandi 	(id:0016 	öncelik:3 	kalan süre:0 sn)
-4.0000 sn T10 sonlandi 	(id:0010 	öncelik:2 	kalan süre:0 sn)
-4.0010 sn T15 sonlandi 	(id:0015 	öncelik:1 	kalan süre:0 sn)
-4.0010 sn T7 sonlandi 	(id:0007 	öncelik:0 	kalan süre:0 sn)
-4.0010 sn T8 sonlandi 	(id:0008 	öncelik:0 	kalan süre:0 sn)
-4.0010 sn T17 sonlandi 	(id:0017 	öncelik:0 	kalan süre:0 sn)
-4.0030 sn T18 sonlandi 	(id:0018 	öncelik:0 	kalan süre:0 sn)
-4.0030 sn T20 sonlandi 	(id:0020 	öncelik:0 	kalan süre:0 sn)
+Simulasyon Basliyor...
+0.0000 sn proses başladı                (id:0000        oncelik:1       kalan sure:2 sn)
+1.0000 sn proses askıda         (id:0000        oncelik:2       kalan sure:1 sn)
+1.0000 sn proses başladı                (id:0001        oncelik:0       kalan sure:1 sn)
+2.0000 sn proses sonlandı               (id:0001        oncelik:0       kalan sure:0 sn)
+2.0000 sn proses başladı                (id:0003        oncelik:0       kalan sure:3 sn)
+3.0000 sn proses yürütülüyor            (id:0003        oncelik:0       kalan sure:2 sn)
+4.0000 sn proses yürütülüyor            (id:0003        oncelik:0       kalan sure:1 sn)
+5.0000 sn proses sonlandı               (id:0003        oncelik:0       kalan sure:0 sn)
+5.0000 sn proses başladı                (id:0006        oncelik:0       kalan sure:4 sn)
+6.0000 sn proses yürütülüyor            (id:0006        oncelik:0       kalan sure:3 sn)
+7.0000 sn proses yürütülüyor            (id:0006        oncelik:0       kalan sure:2 sn)
+8.0000 sn proses yürütülüyor            (id:0006        oncelik:0       kalan sure:1 sn)
+9.0000 sn proses sonlandı               (id:0006        oncelik:0       kalan sure:0 sn)
+9.0000 sn proses başladı                (id:0007        oncelik:0       kalan sure:4 sn)
+10.0000 sn proses yürütülüyor           (id:0007        oncelik:0       kalan sure:3 sn)
+11.0000 sn proses yürütülüyor           (id:0007        oncelik:0       kalan sure:2 sn)
+12.0000 sn proses yürütülüyor           (id:0007        oncelik:0       kalan sure:1 sn)
+13.0000 sn proses sonlandı              (id:0007        oncelik:0       kalan sure:0 sn)
+13.0000 sn proses başladı               (id:0008        oncelik:0       kalan sure:2 sn)
+14.0000 sn proses yürütülüyor           (id:0008        oncelik:0       kalan sure:1 sn)
+15.0000 sn proses sonlandı              (id:0008        oncelik:0       kalan sure:0 sn)
+15.0000 sn proses başladı               (id:0010        oncelik:0       kalan sure:3 sn)
+16.0000 sn proses yürütülüyor           (id:0010        oncelik:0       kalan sure:2 sn)
+17.0000 sn proses yürütülüyor           (id:0010        oncelik:0       kalan sure:1 sn)
+18.0000 sn proses sonlandı              (id:0010        oncelik:0       kalan sure:0 sn)
+18.0000 sn proses başladı               (id:0016        oncelik:0       kalan sure:4 sn)
+19.0000 sn proses yürütülüyor           (id:0016        oncelik:0       kalan sure:3 sn)
+20.0000 sn proses yürütülüyor           (id:0016        oncelik:0       kalan sure:2 sn)
+21.0000 sn proses zamanasımı            (id:0000        oncelik:2       kalan sure:1 sn)
+21.0000 sn proses zamanasımı            (id:0002        oncelik:3       kalan sure:2 sn)
+21.0000 sn proses zamanasımı            (id:0004        oncelik:2       kalan sure:2 sn)
+21.0000 sn proses yürütülüyor           (id:0016        oncelik:0       kalan sure:1 sn)
+22.0000 sn proses sonlandı              (id:0016        oncelik:0       kalan sure:0 sn)
+22.0000 sn proses zamanasımı            (id:0005        oncelik:2       kalan sure:3 sn)
+22.0000 sn proses başladı               (id:0017        oncelik:0       kalan sure:4 sn)
+23.0000 sn proses yürütülüyor           (id:0017        oncelik:0       kalan sure:3 sn)
+24.0000 sn proses zamanasımı            (id:0009        oncelik:2       kalan sure:4 sn)
+24.0000 sn proses yürütülüyor           (id:0017        oncelik:0       kalan sure:2 sn)
+25.0000 sn proses zamanasımı            (id:0011        oncelik:3       kalan sure:2 sn)
+25.0000 sn proses yürütülüyor           (id:0017        oncelik:0       kalan sure:1 sn)
+26.0000 sn proses sonlandı              (id:0017        oncelik:0       kalan sure:0 sn)
+26.0000 sn proses zamanasımı            (id:0012        oncelik:3       kalan sure:2 sn)
+26.0000 sn proses zamanasımı            (id:0013        oncelik:1       kalan sure:2 sn)
+26.0000 sn proses başladı               (id:0019        oncelik:0       kalan sure:4 sn)
+27.0000 sn proses yürütülüyor           (id:0019        oncelik:0       kalan sure:3 sn)
+28.0000 sn proses zamanasımı            (id:0014        oncelik:1       kalan sure:4 sn)
+28.0000 sn proses yürütülüyor           (id:0019        oncelik:0       kalan sure:2 sn)
+29.0000 sn proses zamanasımı            (id:0015        oncelik:3       kalan sure:4 sn)
+29.0000 sn proses yürütülüyor           (id:0019        oncelik:0       kalan sure:1 sn)
+30.0000 sn proses sonlandı              (id:0019        oncelik:0       kalan sure:0 sn)
+30.0000 sn proses başladı               (id:0024        oncelik:1       kalan sure:2 sn)
+31.0000 sn proses askıda                (id:0024        oncelik:2       kalan sure:1 sn)
+31.0000 sn proses başladı               (id:0018        oncelik:2       kalan sure:2 sn)
+32.0000 sn proses askıda                (id:0018        oncelik:3       kalan sure:1 sn)
+32.0000 sn proses başladı               (id:0022        oncelik:2       kalan sure:3 sn)
+33.0000 sn proses askıda                (id:0022        oncelik:3       kalan sure:2 sn)
+33.0000 sn proses yürütülüyor           (id:0024        oncelik:2       kalan sure:1 sn)
+34.0000 sn proses sonlandı              (id:0024        oncelik:2       kalan sure:0 sn)
+34.0000 sn proses başladı               (id:0020        oncelik:3       kalan sure:3 sn)
+35.0000 sn proses askıda                (id:0020        oncelik:4       kalan sure:2 sn)
+35.0000 sn proses başladı               (id:0021        oncelik:3       kalan sure:2 sn)
+36.0000 sn proses askıda                (id:0021        oncelik:4       kalan sure:1 sn)
+36.0000 sn proses başladı               (id:0023        oncelik:3       kalan sure:2 sn)
+37.0000 sn proses askıda                (id:0023        oncelik:4       kalan sure:1 sn)
+37.0000 sn proses yürütülüyor           (id:0018        oncelik:3       kalan sure:1 sn)
+38.0000 sn proses sonlandı              (id:0018        oncelik:3       kalan sure:0 sn)
+38.0000 sn proses yürütülüyor           (id:0022        oncelik:3       kalan sure:2 sn)
+39.0000 sn proses askıda                (id:0022        oncelik:4       kalan sure:1 sn)
+39.0000 sn proses yürütülüyor           (id:0020        oncelik:4       kalan sure:2 sn)
+40.0000 sn proses askıda                (id:0020        oncelik:5       kalan sure:1 sn)
+40.0000 sn proses yürütülüyor           (id:0021        oncelik:4       kalan sure:1 sn)
+41.0000 sn proses sonlandı              (id:0021        oncelik:4       kalan sure:0 sn)
+41.0000 sn proses yürütülüyor           (id:0023        oncelik:4       kalan sure:1 sn)
+42.0000 sn proses sonlandı              (id:0023        oncelik:4       kalan sure:0 sn)
+42.0000 sn proses yürütülüyor           (id:0022        oncelik:4       kalan sure:1 sn)
+43.0000 sn proses sonlandı              (id:0022        oncelik:4       kalan sure:0 sn)
+43.0000 sn proses yürütülüyor           (id:0020        oncelik:5       kalan sure:1 sn)
+44.0000 sn proses sonlandı              (id:0020        oncelik:5       kalan sure:0 sn)
+Simulasyon Bitti.
