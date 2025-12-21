@@ -1,21 +1,38 @@
 #include <stdio.h>
 #include "scheduler.h"
+#include "FreeRTOS.h"
+#include "task.h"
+
+/* tasks.c içinde tanımlı global değişkenler / fonksiyonlar */
+extern TaskHandle* taskList;
+extern int taskCount;
+extern void read_input_file(const char* filename);
+extern void create_tasks_from_list(TaskHandle* list, int count);
 
 int main(int argc, char* argv[]) {
-    // Argüman kontrolü
+    /* stdout'u anında görmek için unbuffered yap */
+    setbuf(stdout, NULL);
+
     if (argc < 2) {
-        printf("Kullanim: ./freertos_sim giris.txt\n");
+        printf("Kullanim: %s <giris_dosyasi>\n", argv[0]);
         return 1;
     }
 
-    printf("Simulasyon Baslatiliyor...\n");
-    printf("Giris Dosyasi: %s\n", argv[1]);
+    /* 1) Dosyayı oku ve taskList / taskCount doldurulsun */
+    read_input_file(argv[1]);
 
-    // Dosya okuma işlemi burada yapılacak (Task 1'deki arkadaş yapacak)
-    // read_input_file(argv[1]);
+    /* 2) Okunan listeden FreeRTOS görevlerini oluştur */
+    create_tasks_from_list(taskList, taskCount);
 
-    // Scheduler başlatma (Task 3'teki arkadaş yapacak)
-    // init_scheduler();
+    printf("\n[SISTEM] FreeRTOS Kernel Baslatiliyor... (Simulasyon Basladi)\n");
+    fflush(stdout);
+    printf("[DIAGNOSTIC] vTaskStartScheduler çağrılacak...\n");
+    fflush(stdout);
 
-    return 0;
+    /* 3) Scheduler'ı başlat (tek çağrı) */
+    vTaskStartScheduler();
+
+    /* Scheduler dönmüşse hata var */
+    printf("[DIAGNOSTIC] vTaskStartScheduler dondu! (Scheduler baslatilamadi)\n");
+    return 1;
 }

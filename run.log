@@ -1,0 +1,27 @@
+--- Dosya Okuma Basladi: giris.txt ---
+Okundu -> Task: T1 | Gelis: 0 | Oncelik: 1 | Sure: 2
+Okundu -> Task: T2 | Gelis: 1 | Oncelik: 0 | Sure: 1
+Okundu -> Task: T3 | Gelis: 1 | Oncelik: 3 | Sure: 2
+Okundu -> Task: T4 | Gelis: 1 | Oncelik: 0 | Sure: 3
+Okundu -> Task: T5 | Gelis: 1 | Oncelik: 2 | Sure: 2
+Okundu -> Task: T6 | Gelis: 2 | Oncelik: 2 | Sure: 3
+Okundu -> Task: T7 | Gelis: 2 | Oncelik: 0 | Sure: 4
+Okundu -> Task: T8 | Gelis: 2 | Oncelik: 0 | Sure: 4
+Okundu -> Task: T9 | Gelis: 3 | Oncelik: 0 | Sure: 2
+Okundu -> Task: T10 | Gelis: 4 | Oncelik: 2 | Sure: 4
+Okundu -> Task: T11 | Gelis: 5 | Oncelik: 0 | Sure: 3
+Okundu -> Task: T12 | Gelis: 5 | Oncelik: 3 | Sure: 2
+Okundu -> Task: T13 | Gelis: 6 | Oncelik: 3 | Sure: 2
+Okundu -> Task: T14 | Gelis: 6 | Oncelik: 1 | Sure: 2
+Okundu -> Task: T15 | Gelis: 8 | Oncelik: 1 | Sure: 4
+Okundu -> Task: T16 | Gelis: 9 | Oncelik: 3 | Sure: 4
+Okundu -> Task: T17 | Gelis: 11 | Oncelik: 0 | Sure: 4
+Okundu -> Task: T18 | Gelis: 12 | Oncelik: 0 | Sure: 4
+Okundu -> Task: T19 | Gelis: 14 | Oncelik: 2 | Sure: 2
+Okundu -> Task: T20 | Gelis: 15 | Oncelik: 0 | Sure: 4
+Okundu -> Task: T21 | Gelis: 16 | Oncelik: 3 | Sure: 3
+Okundu -> Task: T22 | Gelis: 18 | Oncelik: 3 | Sure: 2
+Okundu -> Task: T23 | Gelis: 22 | Oncelik: 2 | Sure: 3
+Okundu -> Task: T24 | Gelis: 23 | Oncelik: 3 | Sure: 2
+Okundu -> Task: T25 | Gelis: 24 | Oncelik: 1 | Sure: 2
+--- Toplam 25 task yüklendi. ---

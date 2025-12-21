@@ -30,9 +30,24 @@ typedef struct {
     void* taskHandle;       
 } TaskHandle;
 
+#include "FreeRTOS.h"
+#include "queue.h"
+#include "task.h"
+
+// Global Kuyruk Handle'ları (Diğer dosyalardan erişilebilsin diye extern yapıyoruz)
+extern QueueHandle_t xQueueRealTime; // Seviye 0
+extern QueueHandle_t xQueueHigh;     // Seviye 1
+extern QueueHandle_t xQueueMedium;   // Seviye 2
+extern QueueHandle_t xQueueLow;      // Seviye 3
+
 // Global Fonksiyon Prototipleri
 void init_scheduler();
 void read_input_file(const char* filename);
 void print_task_info(TaskHandle* task);
+
+void GeneralTaskFunction(void* pvParameters);
+void add_to_queue(TaskHandle* task);
+void print_status(const char* action, TaskHandle* t);
+void create_tasks_from_list(TaskHandle* list, int count);
 
 #endif

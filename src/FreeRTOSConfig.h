@@ -13,8 +13,8 @@
 #define configCPU_CLOCK_HZ                      ( ( unsigned long ) 100000000 ) /* PC'de sanal hız */
 #define configTICK_RATE_HZ                      ( ( TickType_t ) 1000 )         /* 1000 Hz = 1ms Tick */
 #define configMAX_PRIORITIES                    ( 5 )
-#define configMINIMAL_STACK_SIZE                ( ( unsigned short ) 128 )
-#define configTOTAL_HEAP_SIZE                   ( ( size_t ) ( 65 * 1024 ) )
+#define configMINIMAL_STACK_SIZE                ( ( unsigned short ) 256 )
+#define configTOTAL_HEAP_SIZE                   ( ( size_t ) ( 200 * 1024 ) )
 #define configMAX_TASK_NAME_LEN                 ( 16 )
 #define configUSE_TRACE_FACILITY                1
 #define configUSE_16_BIT_TICKS                  0
@@ -28,6 +28,13 @@
 #define configUSE_ALTERNATIVE_API               0
 #define configUSE_QUEUE_SETS                    1
 #define configUSE_TASK_NOTIFICATIONS            1
+#define INCLUDE_vTaskPrioritySet                1
+#define INCLUDE_uxTaskPriorityGet               1
+#define INCLUDE_vTaskDelete                     1
+#define INCLUDE_vTaskCleanUpResources           1
+#define INCLUDE_vTaskSuspend                    1
+#define INCLUDE_vTaskDelayUntil                 1
+#define INCLUDE_vTaskDelay                      1
 
 /* Software Timer Ayarları */
 #define configUSE_TIMERS                        1
