@@ -28,14 +28,21 @@ void create_tasks_from_list(TaskHandle* list, int count) {
     for (int i = 0; i < count; ++i) {
         char name[16];
         snprintf(name, sizeof(name), "%s", list[i].taskName);
+        
+        // Taskları oluştururken handle'ı struct içine kaydediyoruz
+        // Öncelik olarak hepsine düşük veriyoruz, kontrol tamamen Scheduler'da olacak.
         BaseType_t res = xTaskCreate( GeneralTaskFunction,
                                       name,
                                       configMINIMAL_STACK_SIZE,
                                       &list[i],
-                                      /* maplama: FreeRTOS priority >=1 */ (list[i].priority + 1),
-                                      NULL );
+                                      tskIDLE_PRIORITY + 1, // Hepsine standart öncelik
+                                      &list[i].taskHandle ); // Handle'ı kaydet!
+
         if (res != pdPASS) {
             printf("HATA: Gorev olusturulamadi: %s\n", name);
+        } else {
+            // Task hemen çalışmasın, Scheduler sırasını beklesin
+            vTaskSuspend(list[i].taskHandle);
         }
     }
 }
@@ -54,7 +61,7 @@ void read_input_file(const char* filename) {
     
     taskList = (TaskHandle*)malloc(sizeof(TaskHandle) * 100); // Max 100 task
     char line[128];
-    int id_counter = 1;
+    int id_counter = 0;
 
     printf("--- Dosya Okuma Basladi: %s ---\n", filename);
 
@@ -72,6 +79,7 @@ void read_input_file(const char* filename) {
             taskList[taskCount].priority = priority;
             taskList[taskCount].burstTime = burst;
             taskList[taskCount].remainingTime = burst;
+            taskList[taskCount].lastActiveTime = arrival;
             taskList[taskCount].state = TASK_READY;
             taskList[taskCount].currentQueue = priority; // Başlangıçta önceliğine göre kuyruğa girer
             

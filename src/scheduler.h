@@ -1,8 +1,14 @@
 #ifndef SCHEDULER_H
 #define SCHEDULER_H
 
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "semphr.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+extern TaskHandle_t xSchedulerTaskHandle;
 
 // Task Durumları
 typedef enum {
@@ -21,7 +27,7 @@ typedef struct {
     int priority;           // 0 (RealTime), 1 (High), 2 (Medium), 3 (Low)
     int burstTime;          // Toplam çalışma süresi (Gereken süre)
     int remainingTime;      // Kalan süre (Başlangıçta burstTime'a eşit)
-    
+    int lastActiveTime;
     TaskState state;        // O anki durumu
     int currentQueue;       // Hangi kuyrukta? (0, 1, 2, 3)
     int colorCode;          // Terminalde hangi renkle yazacak?
@@ -39,7 +45,8 @@ extern QueueHandle_t xQueueRealTime; // Seviye 0
 extern QueueHandle_t xQueueHigh;     // Seviye 1
 extern QueueHandle_t xQueueMedium;   // Seviye 2
 extern QueueHandle_t xQueueLow;      // Seviye 3
-
+extern TaskHandle* taskList;
+extern int taskCount;
 // Global Fonksiyon Prototipleri
 void init_scheduler();
 void read_input_file(const char* filename);

@@ -5,87 +5,85 @@
 #include <stdio.h>
 #include <string.h>
 
-// Kuyruklar
-QueueHandle_t xQueueRealTime;
-QueueHandle_t xQueueHigh;
-QueueHandle_t xQueueMedium;
-QueueHandle_t xQueueLow;
-
 extern TaskHandle* taskList;
 extern int taskCount;
 int globalTime = 0;
+TaskHandle_t xSchedulerTaskHandle = NULL; // Controller Handle
 
-// Renk kodları
+// Kuyruklar (Queue) - TaskHandle pointer tutacaklar
+QueueHandle_t xQueueRealTime; // Prio 0
+QueueHandle_t xQueueHigh;     // Prio 1
+QueueHandle_t xQueueMedium;   // Prio 2
+QueueHandle_t xQueueLow;      // Prio 3
+
+// Yardımcı: Renkli yazdırma
 const char* get_color(int id) {
-    static const char* colors[] = {"\033[0;31m", "\033[0;32m", "\033[0;33m", "\033[0;34m", "\033[0;35m", "\033[0;36m"};
-    return colors[id % 6];
+    // İsteğe bağlı renk kodları
+    return ""; 
 }
-#define RESET_COLOR "\033[0m"
 
-// İşçi Task (Dummy)
+// --- İŞÇİ TASK (WORKER) ---
+// Bu task sadece Scheduler izin verdiğinde 1 sn (simüle) çalışır.
 void GeneralTaskFunction(void* pvParameters) {
     TaskHandle* t = (TaskHandle*) pvParameters;
 
-    print_status("başladı", t);
-
-    for (;;) {
-        if (t->remainingTime <= 0) {
-            print_status("sonlandi", t);
-            vTaskDelete(NULL);
+    while(1) {
+        // 1. Scheduler beni uyandırana kadar bekle
+        // (xTaskCreate sonrası zaten Suspend edildi, Resume edilince buraya düşer)
+        
+        // 2. İşlem yap (Kalan süreyi azalt)
+        if (t->remainingTime > 0) {
+            t->remainingTime--;
         }
 
-        print_status("yürütülüyor", t);
+        // 3. İşim bitti, Yöneticiye haber ver (Benim 1 saniyem doldu)
+        xTaskNotifyGive(xSchedulerTaskHandle);
 
-        /* 1 saniye bekle — tick hızınız 1000 ise pdMS_TO_TICKS(1000) = 1s */
-        vTaskDelay(pdMS_TO_TICKS(1000));
-
-        t->remainingTime--;
+        // 4. Tekrar uyku moduna geç (Yönetici bir daha çağırana kadar)
+        vTaskSuspend(NULL);
     }
 }
 
-// Kuyruğa Ekle
+// --- YARDIMCI: Kuyruğa Ekle ---
 void add_to_queue(TaskHandle* task) {
     switch(task->priority) {
         case 0: xQueueSend(xQueueRealTime, &task, 0); break;
         case 1: xQueueSend(xQueueHigh,     &task, 0); break;
         case 2: xQueueSend(xQueueMedium,   &task, 0); break;
-        case 3: xQueueSend(xQueueLow,      &task, 0); break;
+        default: xQueueSend(xQueueLow,     &task, 0); break;
     }
 }
 
-// Yazdırma (Flush eklenmiş)
-void print_status(const char* action, TaskHandle* t)
-{
-    TickType_t ticks = xTaskGetTickCount();
-    double secs = (double)ticks / (double)configTICK_RATE_HZ;
-    printf("%0.4f sn %s %s \t(id:%04d \töncelik:%d \tkalan süre:%d sn)\n",
-           secs, t->taskName, action, t->id, t->priority, t->remainingTime);
-    fflush(stdout);
-}
-
-// --- ANA KONTROL TASKI ---
+// --- YÖNETİCİ (CONTROLLER) TASK ---
 void SchedulerController(void* pvParameters) {
-    (void) pvParameters;
-    TaskHandle* currentTask = NULL;
-
-    // Başlangıç Debug Mesajı
-    printf("\n[DEBUG] Scheduler Controller Basladi. Zaman: %d\n", globalTime);
-    fflush(stdout);
+    xSchedulerTaskHandle = xTaskGetCurrentTaskHandle();
+    printf("Simulasyon Basliyor...\n");
 
     while(1) {
-        // 1. Yeni Gelenleri Kontrol Et
+        // --- 1. ZAMANAŞIMI KONTROLÜ (Starvation: 20 sn kuralı) ---
+        for(int i=0; i < taskCount; i++) {
+            if(taskList[i].state != TASK_TERMINATED && taskList[i].remainingTime > 0) {
+                // Eğer (Şu anki zaman - Son Aktif Zaman) >= 20 ise ÖLDÜR
+                if((globalTime - taskList[i].lastActiveTime) >= 20) {
+                    taskList[i].state = TASK_TERMINATED;
+                    printf("%d.0000 sn proses zamanasımı\t(id:%04d\toncelik:%d\tkalan sure:%d sn)\n", 
+                           globalTime, taskList[i].id, taskList[i].priority, taskList[i].remainingTime);
+                }
+            }
+        }
+
+        // --- 2. YENİ GELENLERİ KONTROL ET ---
         for(int i=0; i < taskCount; i++) {
             if(taskList[i].arrivalTime == globalTime) {
                 taskList[i].state = TASK_READY;
                 add_to_queue(&taskList[i]);
-                // Debug için isteğe bağlı
-                // printf("[DEBUG] Task kuyruga eklendi: %s\n", taskList[i].taskName);
-                // fflush(stdout);
             }
         }
 
-        // 2. Kuyruklardan Görev Seç
-        QueueHandle_t activeQueue = NULL;
+        // --- 3. KUYRUKLARDAN GÖREV SEÇ ---
+        TaskHandle* currentTask = NULL;
+        
+        // Prio 0 (RealTime) en öncelikli
         if(uxQueueMessagesWaiting(xQueueRealTime) > 0) {
             xQueueReceive(xQueueRealTime, &currentTask, 0);
         } 
@@ -98,70 +96,76 @@ void SchedulerController(void* pvParameters) {
         else if(uxQueueMessagesWaiting(xQueueLow) > 0) {
             xQueueReceive(xQueueLow, &currentTask, 0);
         }
-        else {
-            currentTask = NULL;
-        }
 
-        // 3. Yürütme veya Bekleme
+        // --- 4. GÖREV VARSA ÇALIŞTIR ---
         if(currentTask != NULL) {
-            if(currentTask->burstTime == currentTask->remainingTime)
-                print_status("başladı", currentTask);
-            else
-                print_status("yürütülüyor", currentTask);
+            // Eğer task zaman aşımına uğramışsa (kuyruktan çektik ama ölü) atla
+            if(currentTask->state == TASK_TERMINATED) {
+                continue;
+            }
 
-            // Simülasyon zamanını ilerlet
-            vTaskDelay(pdMS_TO_TICKS(1000)); 
-            currentTask->remainingTime--;
-            globalTime++;
+            // Çıktı formatı (Türkçe karakterler)
+            if(currentTask->burstTime == currentTask->remainingTime) {
+                 printf("%d.0000 sn proses başladı\t\t(id:%04d\toncelik:%d\tkalan sure:%d sn)\n", 
+                        globalTime, currentTask->id, currentTask->priority, currentTask->remainingTime);
+            } else {
+                 printf("%d.0000 sn proses yürütülüyor\t(id:%04d\toncelik:%d\tkalan sure:%d sn)\n", 
+                        globalTime, currentTask->id, currentTask->priority, currentTask->remainingTime);
+            }
 
-            // Task Bitti mi?
+            // Taskı Çalıştır
+            vTaskResume(currentTask->taskHandle);
+            ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+
+            // Task çalıştı, zamanı güncelle
+            globalTime++; 
+            
+            // Task çalıştığı için "Son Aktif Zaman" güncellenir (Zamanaşımı sıfırlanır)
+            currentTask->lastActiveTime = globalTime;
+
             if(currentTask->remainingTime <= 0) {
                 currentTask->state = TASK_TERMINATED;
-                print_status("sonlandı", currentTask);
+                printf("%d.0000 sn proses sonlandı\t\t(id:%04d\toncelik:%d\tkalan sure:%d sn)\n", 
+                       globalTime, currentTask->id, currentTask->priority, 0);
             } 
             else {
-                // Feedback Mantığı
+                // FEEDBACK MEKANİZMASI
                 if(currentTask->priority == 0) {
-                    add_to_queue(currentTask); // Priority 0 değişmez
-                }
-                else if(currentTask->priority < 3) {
-                    currentTask->priority++; // Öncelik düşür
-                    add_to_queue(currentTask);
-                }
+                    add_to_queue(currentTask); // Değişmez
+                } 
                 else {
-                    add_to_queue(currentTask); // Zaten en düşükte
+                    // Öncelik değerini artır (Önceliği düşür). Sınır koymuyoruz (Hoca 5'e kadar çıkmış).
+                    currentTask->priority++;
+                    
+                    printf("%d.0000 sn proses askıda\t\t(id:%04d\toncelik:%d\tkalan sure:%d sn)\n", 
+                           globalTime, currentTask->id, currentTask->priority, currentTask->remainingTime);
+                    
+                    add_to_queue(currentTask);
                 }
             }
         } 
         else {
-            // IDLE Durumu (Boşta)
-            // Eğer hiç task yoksa burası çalışır. Ekrana basmıyorsa sistem kilitlenmiş sanabilirsin.
-            // Debug için bunu açabilirsin:
-            // printf("[IDLE] %d.0000 sn Sistem Bosta\n", globalTime);
-            // fflush(stdout);
-            
-            vTaskDelay(pdMS_TO_TICKS(1000));
+            // IDLE Durumu
             globalTime++;
         }
+        
+        vTaskDelay(pdMS_TO_TICKS(10)); // PC fanı için küçük bekleme
 
-        // 100 saniye sınırı
-        if(globalTime > 100) {
-            printf("Simulasyon Suresi Doldu.\n");
-            fflush(stdout);
+        if(globalTime > 60) { // Hocanın çıktısı 44 sn sürüyor, 60 yeterli
+            printf("Simulasyon Bitti.\n");
             vTaskEndScheduler();
+            break;
         }
     }
 }
 
 void init_scheduler() {
+    // Kuyrukları task pointerı tutacak şekilde oluştur
     xQueueRealTime = xQueueCreate(50, sizeof(TaskHandle*));
     xQueueHigh     = xQueueCreate(50, sizeof(TaskHandle*));
     xQueueMedium   = xQueueCreate(50, sizeof(TaskHandle*));
     xQueueLow      = xQueueCreate(50, sizeof(TaskHandle*));
 
-    xTaskCreate(SchedulerController, "Controller", configMINIMAL_STACK_SIZE * 4, NULL, tskIDLE_PRIORITY + 5, NULL);
+    // Controller en yüksek önceliğe sahip olmalı ki her şeye o karar versin
+    xTaskCreate(SchedulerController, "Controller", configMINIMAL_STACK_SIZE * 4, NULL, configMAX_PRIORITIES - 1, NULL);
 }
-
-/* DİKKAT: create_tasks_from_list fonksiyonu artık src/tasks.c'de tanımlı.
-   Buradaki (önceki) tanımı kaldırdık; eğer scheduler tarafında benzer bir yardımcı
-   fonksiyon gerekiyorsa farklı bir isimle ekleyin (ör. scheduler_create_tasks). */
