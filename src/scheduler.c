@@ -54,8 +54,9 @@ void add_to_queue(TaskHandle* task) {
 }
 
 // Yazdırma (Flush eklenmiş)
-void print_status(const char* action, TaskHandle* t) {
-     TickType_t ticks = xTaskGetTickCount();
+void print_status(const char* action, TaskHandle* t)
+{
+    TickType_t ticks = xTaskGetTickCount();
     double secs = (double)ticks / (double)configTICK_RATE_HZ;
     printf("%0.4f sn %s %s \t(id:%04d \töncelik:%d \tkalan süre:%d sn)\n",
            secs, t->taskName, action, t->id, t->priority, t->remainingTime);
